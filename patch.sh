@@ -32,7 +32,7 @@ implantisomd5 /tmp/boot.iso
 
 ## go home, save new iso, clean up
 cd
-mv /tmpt/boot.iso ~/CentOS-7-x86_64-autoinst.iso
+mv /tmp/boot.iso ~/CentOS-7-x86_64-autoinst.iso
 
 umount /tmp/bootiso
 rm -rf /tmp/boot.iso
