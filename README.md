@@ -6,6 +6,8 @@ An invaluable tool for system administrators is auto-installation, which is avai
 
 The following will give us an ISO that will boot and install with no intervaention.  The installation will be a minimal install listening for root on ssh to be farther configured.
 
+Also available in this repository is a stand-alone script to complete the following.
+
 ## The kickstart
 
 CentOS uses a 'kickstart' file to initiate installation.  This file is a manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need patch an installation ISO.
