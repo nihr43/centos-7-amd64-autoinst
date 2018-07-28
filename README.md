@@ -1,12 +1,11 @@
-# centos7-automation
-nihr43
-
-Tutorial on building an automated CentOS-7 installation iso
+# Building a CentOS7 ISO
+###### A tutorial on building an automated CentOS-7 installation iso
+###### nihr43
 
 An invaluable tool for system administrators is auto-installation, which is available for many operating systems, though often poorly documented.  Combined with configuration management, automatic installation helps make physical or virtual infrastructure as programmable as containers, bringing a more sustainable approach to system administration to a wider array of platforms.  For example, instead of worrying about juggling site-wide updates, simply re-provision!
 
 
-## Building a CentOS 7 ISO
+## The kickstart
 
 CentOS uses a 'kickstart' file to initiate installation.  This file is a manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need to build out own installation ISO.
 
@@ -70,6 +69,7 @@ echo "PermitRootLogin without-password" >> /etc/ssh/sshd_config
 %end
 ```
 
+## The ISO
 
 Next, we need a copy of CentOS.
 ```sh
