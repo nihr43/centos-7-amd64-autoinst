@@ -7,7 +7,7 @@ An invaluable tool for system administrators is auto-installation, which is avai
 
 ## The kickstart
 
-CentOS uses a 'kickstart' file to initiate installation.  This file is a manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need to build out own installation ISO.
+CentOS uses a 'kickstart' file to initiate installation.  This file is a manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need patch an installation ISO.
 
 First, we need to install the required packages.
 ```sh
