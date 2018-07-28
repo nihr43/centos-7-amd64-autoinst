@@ -17,7 +17,7 @@ First, we need to install the required packages.  This is written for a CentOS s
 yum install genisoimage isomd5sum syslinux wget
 ```
 
-We also need a kickstart to start from.  This is mine.  It destroys all disks, installs to the first disk, enables the first ethernet interface, and enables sshd.  You will want to replace the public ssh key with your own if you don't want me logging on!
+We also need a kickstart to start from.  This is mine.  It destroys all disks, installs to the first disk, enables eth0 (if your network interface is named differently, you will need to change this.  virtio corresponds with eth0), and enables sshd.  The root password is random and unknown.  You will want to replace the public ssh key with your own if you don't want me logging on!
 ```
 #version=DEVEL
 
