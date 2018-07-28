@@ -2,7 +2,7 @@
 #
 ## builds CentOS-7-x86_64-autoinst.iso in ~
 ## expects ./ks.cfg present
-## mucks around a bit; meant for its own VM.
+## mucks around a bit; meant to be run in its own VM.
 
 ## dependencies
 yum install genisoimage isomd5sum syslinux wget
