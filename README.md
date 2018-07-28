@@ -95,6 +95,7 @@ Copy our kickstart into new iso and point the bootloader at the kickstart
 ```sh
 cp ./ks.cfg /tmp/newiso/isolinux/ks.cfg
 sed -i 's/append\ initrd\=initrd.img/append initrd=initrd.img\ ks\=cdrom:\/ks.cfg/' /tmp/newiso/isolinux/isolinux.cfg
+```
 
 Build the new ISO9660 filesystem with the OS contents
 ```sh
