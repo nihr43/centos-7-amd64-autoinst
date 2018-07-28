@@ -2,9 +2,9 @@
 ###### A tutorial on building an automated CentOS-7 installation iso
 ###### nihr43
 
-An invaluable tool for system administrators is auto-installation, which is available for many operating systems, though often poorly documented.  Combined with configuration management, automatic installation helps make physical or virtual infrastructure as programmable as containers, bringing a more sustainable approach to system administration to a wider array of platforms.  For example, instead of worrying about juggling site-wide updates, simply re-provision!
+An invaluable tool for system administrators is auto-installation, which is available for many operating systems, though often poorly documented.  Combined with configuration management, automatic installation is the first step physical or virtual infrastructure as programmable as container or cloud infrastructure, bringing more sustainability the administration of a wider array of platforms.  For example, instead of worrying about juggling site-wide updates, simply re-provision!
 
-The following will give us an ISO that will boot and install with no intervaention.  The installation will be a minimal install listening for root on ssh to be farther configured.
+The following will give us an ISO that will boot and install with no intervention.  The installation will be a minimal, listening for root on ssh to be farther configured.
 
 Also available in this repository is a stand-alone script to complete the following.
 
