@@ -117,3 +117,4 @@ rm -rf /tmp/newiso
 ```
 
 We now have a bootable ISO image CentOS-7-x86_64-autoinst.iso in our home directory.
+Need more automation?  Set up your continuous integration infrastructure to rebuild the ISO every time an update to ks.cfg is committed!
