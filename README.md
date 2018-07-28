@@ -4,12 +4,13 @@
 
 An invaluable tool for system administrators is auto-installation, which is available for many operating systems, though often poorly documented.  Combined with configuration management, automatic installation helps make physical or virtual infrastructure as programmable as containers, bringing a more sustainable approach to system administration to a wider array of platforms.  For example, instead of worrying about juggling site-wide updates, simply re-provision!
 
+The following will give us an ISO that will boot and install with no intervaention.  The installation will be a minimal install listening for root on ssh to be farther configured.
 
 ## The kickstart
 
 CentOS uses a 'kickstart' file to initiate installation.  This file is a manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need patch an installation ISO.
 
-First, we need to install the required packages.
+First, we need to install the required packages.  This is written for a CentOS system.
 ```sh
 yum install genisoimage isomd5sum syslinux wget
 ```
