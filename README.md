@@ -8,12 +8,68 @@ An invaluable tool for system administrators is auto-installation, which is avai
 
 ## Building a CentOS 7 ISO
 
-CentOS uses a 'kickstart' file to initiate installation.  This file is manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need to build out own installation ISO.
+CentOS uses a 'kickstart' file to initiate installation.  This file is a manifest for CentOS' anaconda installer, and it provides post-install shell script functionality.  It can be placed on an http server, or on the ISO itself.  To keep things self-contained, it is nice to keep this file on the ISO itself.  This means we need to build out own installation ISO.
 
 First, we need to install the required packages.
 ```sh
 yum install genisoimage isomd5sum syslinux wget
 ```
+
+We also need a kickstart to start from.  This is mine.  It destroys all disks, installs to the first disk, enables the first ethernet interface, and enables sshd.  You will want to replace the public ssh key with your own if you don't want me logging on!
+```
+#version=DEVEL
+
+# System authorization information
+auth --enableshadow --passalgo=sha512
+# Use CDROM installation media
+cdrom
+# Use graphical install
+graphical
+# Run the Setup Agent on first boot
+firstboot --enable
+clearpart --all --drives=sda
+ignoredisk --only-use=sda
+# Keyboard layouts
+keyboard --vckeymap=us --xlayouts='us'
+# System language
+lang en_US.UTF-8
+
+# Network information
+network  --bootproto=dhcp --device=eth0 --ipv6=auto --activate
+network  --hostname=centos-unnamed
+
+# Root password
+rootpw --iscrypted $6$V4Y01idZyVibjE3M$e1.SlfF2njBVosAM/ZsqjXkzcEXq4OXD4oD95Bs/GMKQAJq5Or7tJZUVr7M3NzSyRNJeqXitjnSigbYljbxyS1
+# System services
+services --enabled="chronyd"
+# System timezone
+timezone America/New_York --isUtc
+# System bootloader configuration
+bootloader --append=" crashkernel=auto" --location=mbr --boot-drive=sda
+autopart --type=lvm
+
+reboot
+
+%packages
+@^minimal
+@core
+chrony
+kexec-tools
+
+%end
+
+%addon com_redhat_kdump --enable --reserve-mb='auto'
+%end
+
+
+%post --log=/root/postinstall.log --interpreter=/bin/sh
+hostnamectl set-hostname $(ip link | grep ether | awk -F ':' '{print $4$5$6}' | awk '{print $1}')
+mkdir /root/.ssh
+echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC1QYcwX7t0T5jnmrlxd68zeLX5WO4bjj/O8VdK09JN8mQFd16BasllF1vKYE+sPbT1fHyxUrL4U3q3Dwx1OnZB8KqfYVu4gJXxWOCCkc4p0xXHl0IXdJlm8YtebavKUbnYJlYAtE8xxBFj7RhYxOm2v16LTg+48vGPtlnzVGPMATDA97whLW5Dbu6nj5JfAt/RMJgynR+QGlED70inab0H/Pb2ND3buro1b3v18VCZjMMRUfckp0s/Ibpj2D81oJNF2G3lZXYGTDEXQQmzqjjIczQQYdc7WlTXYUksZIroUInNpUSJjPyghjdai4PlRUf+ggqQXavVQ5D8WZS4sbZBWibU4YV/7HMv+D5pJ8mlLzajM+ZRtOtMSrSpX5Xbj5VEFKSGsBU8Ob66mGmt6EmuimEjsXpLCbhdB9ShIhgpeSLFYcbsgWWFTE7tLtOVxShcpm/H+GlwjvBSX5wdj9pqlSCB+L4birhhvT7xZwRAxOBwywOnPkPY7KBECDbGrQbEop3EWz43Arffssrq1irixF9lIVfH7/1sojSz32FAUKHD80J/rIM2RZ9gl1MhTBglPIZHtDJVwtL3x8I+whKgqk7zkZUkgIAIu5B0gH4SEPlhPwEZOQMyV9HtSQmxo07QB1zkrf6PqV8+BIHMS8AMdxeGIAYgxhD8iMWH4ejiow== user@host" > /root/.ssh/authorized_keys
+echo "PermitRootLogin without-password" >> /etc/ssh/sshd_config
+%end
+```
+
 
 Next, we need a copy of CentOS.
 ```sh
