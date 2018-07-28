@@ -6,7 +6,7 @@ An invaluable tool for system administrators is auto-installation, which is avai
 
 The following will give us an ISO that will boot and install with no intervention.  The installation will be a minimal, listening for root on ssh to be farther configured.
 
-Also available in this repository is a stand-alone script to complete the following.
+Also available in this repository is a stand-alone script to perform all of the following.
 
 ## The kickstart
 
