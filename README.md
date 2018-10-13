@@ -1,8 +1,6 @@
 # Building a CentOS7 ISO
-###### A tutorial on building an automated CentOS-7 installation iso
-###### nihr43
+###### Noteson building an automated CentOS-7 installation iso
 
-An invaluable tool for system administrators is auto-installation, which is available for many operating systems, though often poorly documented.  Combined with configuration management, automatic installation is the first step physical or virtual infrastructure as programmable as container or cloud infrastructure, bringing more sustainability to the administration of a wider array of platforms.  For example, instead of worrying about juggling site-wide updates, simply re-provision!
 
 The following will give us an ISO that will boot and install with no intervention.  The installation will be a minimal, listening for root on ssh to be farther configured.
 
@@ -117,5 +115,3 @@ rm -rf /tmp/newiso
 ```
 
 We now have a bootable ISO image CentOS-7-x86_64-autoinst.iso in our home directory.
-
-Need more automation?  Set up your continuous integration infrastructure to rebuild the ISO every time an update to ks.cfg is committed!
