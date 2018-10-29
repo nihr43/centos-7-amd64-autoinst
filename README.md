@@ -1,5 +1,5 @@
 # Building a CentOS7 ISO
-###### Noteson building an automated CentOS-7 installation iso
+###### Notes on building an automated CentOS-7 installation iso
 
 
 The following will give us an ISO that will boot and install with no intervention.  The installation will be a minimal, listening for root on ssh to be farther configured.
